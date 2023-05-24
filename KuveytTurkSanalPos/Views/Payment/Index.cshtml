@@ -1,0 +1,44 @@
+﻿@model KuveytCardNumber
+@{
+    ViewData["Title"] = "Ödeme Ekranı";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" action="/Payment/MakePayments">
+    <div class="row">
+        <div class="col-md-12">
+            <label>Kart Numarası</label>
+            <input class="form-control" asp-for="CardNumber" type="text" required />
+        </div>
+        <div class="col-md-12">
+            <label>Kart Sahibi Ad Soyad</label>
+            <input class="form-control" asp-for="CardName" type="text" required />
+        </div>
+        <div class="col-md-6">
+            <label>Son Kullanım Tarihi Ay</label>
+            <input class="form-control" asp-for="CardExpireDateMonth" placeholder="05" maxlength="2" required />
+        </div>
+        <div class="col-md-6">
+            <label>Son Kullanım Tarihi  Yıl</label>
+            <input class="form-control" asp-for="CardExpireDateYear" placeholder="2023" maxlength="4" required />
+        </div>
+
+        <div class="col-md-6">
+            <label>CVV</label>
+            <input class="form-control" type="number" asp-for="CardCVV" maxlength="3" required />
+        </div>
+        <div class="col-md-6">
+            <label>Tutar</label>
+            <input class="form-control" type="number" asp-for="TotalAmount" required />
+        </div>
+        <div class="col-md-12">
+            <label>Mesajınız</label>
+            <textarea rows="3" asp-for="Message" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary">Ödeme Yap</button>
+        </div>
+    </div>
+</form>
